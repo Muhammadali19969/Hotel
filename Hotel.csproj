@@ -15,7 +15,6 @@
     <Folder Include="Repositories\" />
     <Folder Include="Windows\" />
     <Folder Include="ViewModels\" />
-    <Folder Include="Utils\" />
     <Folder Include="Styles\" />
     <Folder Include="Resourses\" />
     <Folder Include="Pages\" />
