@@ -1,12 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+namespace Hotel.Utils;
 
-namespace Hotel.Utils
+public class PagenationParams
 {
-    internal class PagenationParams
+    public int PageNumber { get; set; }
+
+    public int PageSize { get; set; }
+
+    public PagenationParams(int pageNumber, int pageSize)
     {
+        PageNumber = pageNumber;
+        PageSize = pageSize;
+    }
+
+    public PagenationParams()
+    {
+
     }
 }
