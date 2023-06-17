@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Assets\Images\" />
+    <Folder Include="Assets\Icons\" />
+    <Folder Include="Assets\Sounds\" />
+    <Folder Include="Components\" />
+    <Folder Include="Repositories\" />
+    <Folder Include="Windows\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Utils\" />
+    <Folder Include="Styles\" />
+    <Folder Include="Resourses\" />
+    <Folder Include="Pages\" />
+    <Folder Include="NewFolder\" />
+    <Folder Include="Security\" />
+  </ItemGroup>
+
+</Project>
