@@ -35,6 +35,8 @@
                             Orientation="Horizontal"
                             >
                     <Button Style="{DynamicResource MinimizedButton}"/>
+                    <Button Style="{DynamicResource MaximizedButton}"/>
+                    <Button Style="{DynamicResource ClosedButton}"/>
 
                 </StackPanel>
             </Grid>
