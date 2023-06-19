@@ -4,6 +4,23 @@
              xmlns:local="clr-namespace:Hotel"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                
+                <!--begin::Themes-->
+                <ResourceDictionary Source="/Themes/LightTheme.xaml" />
+                <!--end::Themes-->
+
+                <!--begion::Icons-->
+                <ResourceDictionary Source="/Assets/Icons/Icons.xaml" />
+                <!--end::Icons-->
+
+                
+                <!--begin::Styles-->
+                <ResourceDictionary Source="/Styles/ButtonStyles.xaml"/>
+                <!--end::Styles-->
+
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
