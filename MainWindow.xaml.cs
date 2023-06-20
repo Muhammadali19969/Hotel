@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hotel.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,5 +25,49 @@ namespace Hotel
         {
             InitializeComponent();
         }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void bntMaximize_Click(object sender, RoutedEventArgs e)
+        {
+            if(this.WindowState==WindowState.Maximized)
+            {
+                this.WindowState = WindowState.Normal;
+            }
+            else
+            {
+                this.WindowState = WindowState.Maximized;
+            }
+        }
+
+        private void btnMinimize_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState= WindowState.Minimized;
+        }
+
+        private void brDragable_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
+
+        private void rbAddRoom_Click(object sender, RoutedEventArgs e)
+        {
+            AddRoomPage addRoomPage = new AddRoomPage();
+            PageNavigator.Content=addRoomPage;
+            
+
+        }
+
+        private void rbDashboard_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+       
+
+        
     }
 }

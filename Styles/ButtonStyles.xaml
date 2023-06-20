@@ -49,7 +49,7 @@
                             CornerRadius="25"
                             >
                         <Path Fill="White" Data="{DynamicResource max}"
-                              Stretch="None"/>
+                              />
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
@@ -82,7 +82,9 @@
                             Background="#E31235"
                             CornerRadius="25"
                             >
-                        <Path Fill="White" Data="{DynamicResource close}"/>
+                        <Path Fill="White" Data="{DynamicResource close}"
+                              
+                              />
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
@@ -93,6 +95,68 @@
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="B" Property="Background" Value="#BB0F2B"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!--radio button-->
+    <Style x:Key="MenuButton" TargetType="{x:Type RadioButton}">
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Width" Value="230"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Margin" Value="0 5 0 5"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RadioButton}">
+                    <Border x:Name="B"
+                            CornerRadius="5"
+                            >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5"/>
+                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border x:Name="Indicator" Grid.Column="0"
+                                    Visibility="Collapsed"
+                                    Height="30"
+                                    CornerRadius="5"
+                                    Background="{DynamicResource SecondaryBorderColor}"
+                                    />
+                            <Path x:Name="icon"
+                                  Grid.Column="1"
+                                  Data="{Binding Tag,RelativeSource={RelativeSource AncestorType={x:Type RadioButton}}}"
+                                  Fill="{DynamicResource PrimaryTextColor}"
+                                  Stretch="Uniform"
+                                  Height="18"
+                                  Width="18"/>
+                            
+                            
+                            <Label Grid.Column="2"
+                                   Foreground="{DynamicResource PrimaryTextColor}"
+                                   FontFamily="Microsoft YaHei"
+                                   VerticalAlignment="Center"
+                                   FontSize="{TemplateBinding FontSize}"
+                                   Content="{TemplateBinding Content}"/>
+                        </Grid>
+                        
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="False">
+                            <Setter TargetName="B" Property="Background" Value="Transparent"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="B" Property="Background" Value="{DynamicResource SelectedBackground}"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="B" Property="Background" Value="{DynamicResource SelectedBackground}"/>
+                            <Setter TargetName="Indicator" Property="Visibility" Value="Visible"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
 
