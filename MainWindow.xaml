@@ -69,7 +69,8 @@
 
                     <RadioButton x:Name="rbStayView" 
                                  Style="{DynamicResource MenuButton}"
-                                 Content="Stay View"/>
+                                 Content="Stay View"
+                                 Tag="{DynamicResource StayView}"/>
 
                     <RadioButton x:Name="rbFreeRooms" 
                                  Style="{DynamicResource MenuButton}"
@@ -92,7 +93,7 @@
                     CornerRadius="0 0 10 0">
                 
                 <Frame x:Name="PageNavigator"
-                               NavigationUIVisibility="Hidden"/>
+                       NavigationUIVisibility="Hidden"/>
                 
             </Border>
         </Grid>
