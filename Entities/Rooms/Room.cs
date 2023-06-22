@@ -7,7 +7,7 @@ public sealed class Room: Auditable
 {
     public short Floor { get; set; }
 
-    public long RoomTypeId { get; set; }
+    public string RoomType{ get; set; }
 
     public short RoomNo { get; set; }
 

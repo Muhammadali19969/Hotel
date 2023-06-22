@@ -66,8 +66,10 @@ namespace Hotel
 
         }
 
-       
-
-        
+        private void rbReservation_Click(object sender, RoutedEventArgs e)
+        {
+            ReservationPage reservationPage = new ReservationPage();
+            PageNavigator.Content = reservationPage;
+        }
     }
 }

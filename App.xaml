@@ -18,6 +18,7 @@
                 
                 <!--begin::Styles-->
                 <ResourceDictionary Source="/Styles/ButtonStyles.xaml"/>
+                <ResourceDictionary Source="/Styles/ComboBoxStyle.xaml"/>
                 <!--end::Styles-->
 
             </ResourceDictionary.MergedDictionaries>

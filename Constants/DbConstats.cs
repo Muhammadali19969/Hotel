@@ -6,7 +6,7 @@ public class DbConstats
 {
     public const string DB_HOST = "localhost";
     public const string DB_PORT = "5432";
-    public const string DB_DATABASE = "Hotel";
+    public const string DB_DATABASE = "hotel-db";
     public const string DB_USER = "postgres";
     public const string DB_PASSWORD = "19969";
 

@@ -11,12 +11,14 @@
     <Folder Include="Assets\Images\" />
     <Folder Include="Assets\Sounds\" />
     <Folder Include="Components\" />
-    <Folder Include="Repositories\" />
     <Folder Include="Windows\" />
-    <Folder Include="ViewModels\" />
     <Folder Include="Resourses\" />
     <Folder Include="NewFolder\" />
     <Folder Include="Security\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Npgsql" Version="7.0.4" />
   </ItemGroup>
 
 </Project>
