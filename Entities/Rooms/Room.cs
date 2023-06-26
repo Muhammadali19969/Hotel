@@ -7,11 +7,11 @@ public sealed class Room: Auditable
 {
     public short Floor { get; set; }
 
-    public string RoomType{ get; set; }
+    public string RoomType { get; set; } = string.Empty;
 
     public short RoomNo { get; set; }
 
-    // Room status
+    public string Status { get; set; } = string.Empty;
 
     public float PricePerDay { get; set; }
 

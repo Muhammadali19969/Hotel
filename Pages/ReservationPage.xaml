@@ -6,42 +6,92 @@
       xmlns:local="clr-namespace:Hotel.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="960"
-      Title="ReservationPage">
-
+      Title="ReservationPage"
+      Loaded="Page_Loaded">
+    
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="300"/>
-            <RowDefinition Height="300"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
-        <Border Grid.Row="0"
-                Margin="10"
-                CornerRadius="10"
-                Background="{DynamicResource PrimaryBackground}">
-            <Label Content="Booking:"
-                   Background="{DynamicResource SecondaryBackground}"
-                   Foreground="{DynamicResource PrimaryTextColor}"
-                   FontSize="17"
-                   Height="35"
-                   VerticalAlignment="Top"
-                   Margin="10"/>
-            
-           
-        </Border>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="60"/>
+            </Grid.ColumnDefinitions>
         
-        <Border Grid.Row="1"
-                Margin="10"
-                CornerRadius="10"
-                Background="{DynamicResource PrimaryBackground}">
-            <Border >
-                
-            
-                <Label Content="Guest:"
-                    Foreground="{DynamicResource PrimaryTextColor}"
-                    FontSize="17"/>
-            </Border>
+            <Border Grid.Column="0"
+                    BorderThickness="0 0 0 1"
+                    BorderBrush="{DynamicResource PrimaryBackground}">
+                <StackPanel 
+                            Orientation="Horizontal">
 
-        </Border>
+                    <Border Margin="30 5 0 0"
+                        CornerRadius="10"
+                        Height="20"
+                        Width="20"
+                        Background="Red"
+                        VerticalAlignment="Center">
+
+                    </Border>
+                    <Label Content="Bookked"
+                        Foreground="{DynamicResource PrimaryBackground}"
+                        VerticalAlignment="Center"
+                        FontSize="16"
+                        Margin="8 0 0 0"/>
+
+                    <Border Margin="50 5 0 0"
+                        CornerRadius="10"
+                        Height="20"
+                        Width="20"
+                        Background="Yellow"
+                        VerticalAlignment="Center">
+
+                    </Border>
+                    <Label Content="Pending"
+                        Foreground="{DynamicResource PrimaryBackground}"
+                        VerticalAlignment="Center"
+                        FontSize="16"
+                        Margin="8 0 0 0"/>
+
+                    <Border Margin="50 5 0 0"
+                        CornerRadius="10"
+                        Height="20"
+                        Width="20"
+                        Background="Green"
+                        VerticalAlignment="Center">
+
+                    </Border>
+                    <Label Content="Void"
+                        Foreground="{DynamicResource PrimaryBackground}"
+                        VerticalAlignment="Center"
+                        FontSize="16"
+                        Margin="8 0 0 0"/>
+                
+                </StackPanel>
             
+            </Border>
+            <Border Grid.Column="1"
+                    BorderBrush="{DynamicResource PrimaryBackground}"
+                    BorderThickness="0 0 0 1">
+                <Button 
+                        x:Name="btnRefresh"
+                        Click="btnRefresh_Click"
+                        Style="{DynamicResource RefreshButton}"
+                        Height="28"
+                        Width="30">
+
+                </Button>
+            </Border>
+            
+        </Grid>
+        <ScrollViewer
+            Grid.Row="1">
+            <WrapPanel Grid.Row="1"
+                   x:Name="wrpRooms">
+
+            </WrapPanel>
+        </ScrollViewer>
+        
     </Grid>
 </Page>

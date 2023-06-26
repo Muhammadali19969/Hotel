@@ -10,10 +10,7 @@
   <ItemGroup>
     <Folder Include="Assets\Images\" />
     <Folder Include="Assets\Sounds\" />
-    <Folder Include="Components\" />
-    <Folder Include="Windows\" />
     <Folder Include="Resourses\" />
-    <Folder Include="NewFolder\" />
     <Folder Include="Security\" />
   </ItemGroup>
 

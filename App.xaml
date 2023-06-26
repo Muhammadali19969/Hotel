@@ -18,8 +18,13 @@
                 
                 <!--begin::Styles-->
                 <ResourceDictionary Source="/Styles/ButtonStyles.xaml"/>
+                <ResourceDictionary Source="/Styles/LableStyle.xaml"/>
                 <ResourceDictionary Source="/Styles/ComboBoxStyle.xaml"/>
+                <ResourceDictionary Source="/Styles/DatePickerStyle.xaml"/>
+
                 <!--end::Styles-->
+                
+                
 
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

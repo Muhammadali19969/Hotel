@@ -44,6 +44,7 @@
                             BorderThickness="1"
                             BorderBrush="{DynamicResource PrimaryBackground}">
                         <TextBox x:Name="tbRoomNo"
+                                 TextChanged="tbRoomNo_TextChanged"
                                  MaxLength="5"                                 
                                  Height="30"
                                  FontSize="16"
@@ -67,6 +68,7 @@
                             BorderThickness="1"
                             BorderBrush="{DynamicResource PrimaryBackground}">
                         <TextBox x:Name="tbFloor"
+                                 TextChanged="tbFloor_TextChanged"
                                  MaxLength="5"
                                  FontSize="16"
                                  VerticalContentAlignment="Center"
@@ -128,6 +130,7 @@
                             BorderThickness="1"
                             BorderBrush="{DynamicResource PrimaryBackground}">
                         <TextBox x:Name="tbAmount"
+                                 TextChanged="tbAmount_TextChanged"
                                  Height="30" 
                                  FontSize="16"
                                  VerticalContentAlignment="Center"

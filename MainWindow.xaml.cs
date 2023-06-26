@@ -71,5 +71,19 @@ namespace Hotel
             ReservationPage reservationPage = new ReservationPage();
             PageNavigator.Content = reservationPage;
         }
+
+        private void PageNavigator_Navigated(object sender, NavigationEventArgs e)
+        {
+
+        }
+
+        private void rbEmptyRooms_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        
+        }
+    
     }
-}
+

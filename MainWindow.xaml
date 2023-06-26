@@ -13,7 +13,7 @@
         Width="1000"
         Background="Transparent"
         AllowsTransparency="True">
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
@@ -35,7 +35,7 @@
                 </Grid.ColumnDefinitions>
                 <Border Grid.Column="0"
                         Background="{DynamicResource PrimaryBackground}">
-                    
+
                 </Border>
                 <StackPanel Grid.Column="1"
                             Orientation="Horizontal"
@@ -53,52 +53,60 @@
                 <ColumnDefinition Width="250"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Border Grid.Column="0"
+            <Border BorderThickness="0 1 0 0"
+                    BorderBrush="WhiteSmoke"
+                    Grid.Column="0"
                     Background="{DynamicResource PrimaryBackground}"
                     CornerRadius="0 0 0 10">
-                <StackPanel Margin="0 10 0 0">
-                    <RadioButton x:Name="rbDashboard" 
-                                 Style="{DynamicResource MenuButton}"
-                                 Content="Dashboard"
-                                 Click="rbDashboard_Click"
-                                 Tag="{DynamicResource Dashboard}"/>
 
+                <StackPanel 
+                    Grid.Row="0"
+                    Margin="0 10 0 0"
+                    Orientation="Vertical">
+                    <RadioButton x:Name="rbDashboard" 
+                                Style="{DynamicResource MenuButton}"
+                                Content="Dashboard"
+                                Click="rbDashboard_Click"
+                                Tag="{DynamicResource Dashboard}"/>
                     <RadioButton x:Name="rbReservation" 
-                                 Style="{DynamicResource MenuButton}"
-                                 Content="Reservation"
-                                 Tag="{DynamicResource Reservation}"
-                                 Click="rbReservation_Click"/>
+                                Style="{DynamicResource MenuButton}"
+                                Content="Reservation"
+                                Tag="{DynamicResource Reservation}"
+                                Click="rbReservation_Click"/>
 
                     <RadioButton x:Name="rbStayView" 
-                                 Style="{DynamicResource MenuButton}"
-                                 Content="Stay View"
-                                 Tag="{DynamicResource StayView}"/>
+                                Style="{DynamicResource MenuButton}"
+                                Content="Stay View"
+                                Tag="{DynamicResource StayView}"/>
 
                     <RadioButton x:Name="rbEmptyRooms" 
-                                 Style="{DynamicResource MenuButton}"
-                                 Content="Empty Rooms"
-                                 Tag="{DynamicResource EmptyRooms}"/>
+                                Style="{DynamicResource MenuButton}"
+                                Content="Empty Rooms"
+                                Tag="{DynamicResource EmptyRooms}"
+                                Click="rbEmptyRooms_Click"/>
+
+                    <RadioButton x:Name="rbReport" 
+                                Style="{DynamicResource MenuButton}"
+                                Content="Report"
+                                Tag="{DynamicResource Report}"/>
 
                     <RadioButton x:Name="rbAddRoom" 
-                                 Style="{DynamicResource MenuButton}"
-                                 Content="Add Room"
-                                 Click="rbAddRoom_Click"
-                                 Tag="{DynamicResource AddRoom}"/>
-                    
-                    <RadioButton x:Name="rbReport" 
-                                 Style="{DynamicResource MenuButton}"
-                                 Content="Report"
-                                 Tag="{DynamicResource Setting}"/>
+                                Style="{DynamicResource MenuButton}"
+                                Content="Add Room"
+                                Click="rbAddRoom_Click"
+                                VerticalAlignment="Bottom"
+                                Tag="{DynamicResource AddRoom}"/>
+
                 </StackPanel>
 
             </Border>
             <Border Grid.Column="1"
                     Background="{DynamicResource SecondaryBackground}"
                     CornerRadius="0 0 10 0">
-                
+
                 <Frame x:Name="PageNavigator"
-                       NavigationUIVisibility="Hidden"/>
-                
+                       NavigationUIVisibility="Hidden" Navigated="PageNavigator_Navigated" Margin="-2,0,2,0"/>
+
             </Border>
         </Grid>
 
