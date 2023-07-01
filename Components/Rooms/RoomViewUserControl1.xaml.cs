@@ -3,6 +3,8 @@ using Hotel.Entities.Rooms;
 using Hotel.Interfaces.Guests;
 using Hotel.Repositories.Guests;
 using Hotel.Windows.Booking;
+using System;
+using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -15,6 +17,11 @@ namespace Hotel.Components.Rooms;
 public partial class RoomViewUserControl1 : UserControl
 {
     private readonly IGuestRepository _guestRepository;
+
+    public Room room_chek { get; set; }
+
+    public Func<Task> RefreshDelegate {  get; set; } 
+
     public RoomViewUserControl1()
     {
         InitializeComponent();
@@ -33,6 +40,7 @@ public partial class RoomViewUserControl1 : UserControl
 
     public void SetData(Room room)
     {
+        room_chek = room;
         if (room.Status == "Pending")
         {
             brBookingStatus.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("yellow"));
@@ -58,15 +66,14 @@ public partial class RoomViewUserControl1 : UserControl
 
     private void grMain_MouseDown(object sender, MouseButtonEventArgs e)
     {
-        Room room = new Room();
-        room.PricePerDay =float.Parse(lbPrice.Content.ToString());
-        room.Id=long.Parse(lbId.Content.ToString());
-        
-        BookinWindow bookinWindow = new BookinWindow(room);
-        bookinWindow.ShowDialog();
 
+        if(room_chek.Status == "Void")
+        {
+            BookinWindow bookinWindow = new BookinWindow(room_chek);
+            bookinWindow.ShowDialog();
+            RefreshDelegate();
+        }
         
-
 
 
     }

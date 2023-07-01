@@ -136,8 +136,4 @@ public class RoomRepository : BaseRepository, IRoomRepository
         }
     }
 
-    Task<IList<Room>> IRepository<Room, Room>.GetAllAsync(long id)
-    {
-        throw new NotImplementedException();
-    }
 }

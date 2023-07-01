@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Hotel.ViewModels.Guest;
 
-public class GuestViewModel 
+public class GuestViewModel
 {
    
 }

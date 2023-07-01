@@ -10,5 +10,8 @@ public sealed class Guest : Human
     public long RoomId { get; set; }
     public bool IsBooking { get; set; }
     public float Payme { get; set; }
+    public bool BlackList { get; set; }
+
+    public string? Night { get; set; } = string.Empty;
 
 }

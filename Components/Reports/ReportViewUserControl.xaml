@@ -1,0 +1,126 @@
+﻿<UserControl x:Class="Hotel.Components.Reports.ReportViewUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Hotel.Components.Reports"
+             mc:Ignorable="d" 
+             Height="35"
+            
+             >
+    <Border x:Name="brGrid"
+            Margin="2"
+            CornerRadius="10 10 10 10"
+            Background="#F0E9D2">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="0.9*"/>
+                <ColumnDefinition Width="0.9*"/>
+                <ColumnDefinition Width="0.9*"/>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="0.5*"/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0"
+                    BorderBrush="Black"
+                    >
+                <Label x:Name="lblFname"
+                       Foreground="Black"
+                       FontSize="13"
+                       Content="Salom"
+                       FontFamily="microsoft yahei"
+                       
+                       HorizontalAlignment="Center"/> 
+
+            </Border>
+
+            <Border Grid.Column="1"
+                >
+                <Label x:Name="lblLname"
+                       Foreground="Black"
+                       FontSize="13"
+                       Content="Salom"
+                       FontFamily="microsoft yahei"
+                       HorizontalAlignment="Center"/>
+
+            </Border>
+
+            <Border Grid.Column="2"
+                >
+                <Label x:Name="lblPassSeria"
+                       Foreground="Black"
+                       FontSize="13"
+                       Content="Salom"
+                       FontFamily="microsoft yahei"
+                       HorizontalAlignment="Center"/>
+
+            </Border>
+
+            <Border Grid.Column="3"
+                >
+                <Label x:Name="lblPhoneNum"
+                       Foreground="Black"
+                       FontSize="13"
+                       Content="Salom"
+                       FontFamily="microsoft yahei"
+                       HorizontalAlignment="Center"/>
+
+            </Border>
+
+            <Border Grid.Column="4"
+                >
+                <Label x:Name="lblFrom"
+                       Foreground="Black"
+                       FontSize="13"
+                       Content="Salom"
+                       FontFamily="microsoft yahei"
+                       HorizontalAlignment="Center"/>
+
+            </Border>
+
+            <Border Grid.Column="5"
+                >
+                <Label x:Name="lblTo"
+                       Foreground="Black"
+                       FontSize="13"
+                       Content="Salom"
+                       FontFamily="microsoft yahei"
+                       HorizontalAlignment="Center"/>
+
+            </Border>
+
+            <Border Grid.Column="6"
+                >
+                <Label x:Name="lblPrice"
+                       Foreground="Black"
+                       FontSize="13"
+                       Content="Salom"
+                       FontFamily="microsoft yahei"
+                       HorizontalAlignment="Center"/>
+
+            </Border>
+
+            <Border x:Name="brCheck"
+                    Grid.Column="7"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center">
+                <Path Fill="Black" Data="{DynamicResource minus}"
+                      Margin="0 0 0 7"
+                     />
+
+            </Border>
+
+            <Border Grid.Column="8"
+                >
+                <Button Style="{DynamicResource editButton}"
+                        Click="Button_BlackList_Click"/>
+
+            </Border>
+
+        </Grid>
+    </Border>
+    
+</UserControl>

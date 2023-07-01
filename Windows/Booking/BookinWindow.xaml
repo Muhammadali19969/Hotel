@@ -13,28 +13,33 @@
         AllowsTransparency="True"
         Background="Transparent"
         >
+    <!--<Window.Effect>
+        <DropShadowEffect ShadowDepth="50" Color="Blue" Opacity="0.3"/>
+    </Window.Effect>-->
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="70"/>
+            <RowDefinition Height="60"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Border Grid.Row="0"
-                    Background="#B9DEFF"
-                    CornerRadius="30 30 0 0" Margin="0,2,0,728" Grid.RowSpan="2">
+                    Background="#3B185F"
+                    CornerRadius="10 10 0 0" >
+            
             <Button x:Name="btnClose" 
                     Click="btnClose_Click"
                     HorizontalAlignment="Right"
-                    Margin="540 5 30 5"
+                    Margin="540 15 20 20"
                     Style="{DynamicResource ClosedButton}"/>
+            
 
 
         </Border>
 
         <Border Grid.Row="1"
-        BorderThickness="7 0 7 7"
-        BorderBrush="#B9DEFF"
-        CornerRadius="0 0 30 30"
-        Background="#E0DFDC">
+        BorderThickness="2 0 2 2"
+        BorderBrush="#3B185F"
+        CornerRadius="0 0 10 10"
+        Background="#BEF0CB" >
         <Grid Margin=" 0"
           >
         <Grid.RowDefinitions>
@@ -60,7 +65,7 @@
                     Orientation="Horizontal"
                     >
             <Label
-                Margin="10 0 0 0"
+                Margin="18 0 0 0"
                 x:Name="lblFirstName"
                 VerticalAlignment="Bottom"
                 Content="First name:"
@@ -77,32 +82,42 @@
                     Orientation="Horizontal"
                     >
             <Border 
+                    Background="{DynamicResource TextBoxColor}"
+                    Margin="18 5"
+                    CornerRadius="5"
+                    BorderThickness="1"
+                    BorderBrush="#535353">
                 
-                Background="{DynamicResource TextBoxColor}"
-                Margin="15 5"
-                CornerRadius="5"
-                BorderThickness="1"
-                BorderBrush="#535353">
-                        <TextBox x:Name="tbFirstName"
-                    Style="{DynamicResource TextBoxStyle}"/>
-            </Border>
+                    <Border.Effect>
+                        <DropShadowEffect
+                            Color="Blue"
+                            Opacity="0.2"/>
+                    </Border.Effect>
+                    <TextBox x:Name="tbFirstName"
+                            Style="{DynamicResource TextBoxStyle}"/>
+        </Border>
             <Border 
+                    Background="{DynamicResource TextBoxColor}"
+                    Margin="55 5 0 5"
+                    CornerRadius="5"
+                    BorderThickness="1"
+                    BorderBrush="#535353">
                
-                Background="{DynamicResource TextBoxColor}"
-                Margin="55 5 0 5"
-                CornerRadius="5"
-                BorderThickness="1"
-                BorderBrush="#535353">
-                        <TextBox  x:Name="tbLastName"
-                    HorizontalAlignment="Right"
-                    Style="{DynamicResource TextBoxStyle}"/>
-            </Border>
+                <Border.Effect>
+                    <DropShadowEffect
+                        Color="Blue"
+                        Opacity="0.2"/>
+                </Border.Effect>
+                <TextBox  x:Name="tbLastName"
+                            HorizontalAlignment="Right"
+                            Style="{DynamicResource TextBoxStyle}"/>
+    </Border>
         </StackPanel>
         <StackPanel Grid.Row="2"
                     Orientation="Horizontal"
                     >
             <Label
-                Margin="10 0 0 0"
+                Margin="18 0 0 0"
                 x:Name="lblPhoneNumber"
                 VerticalAlignment="Bottom"
                 Content="Phone number:"
@@ -120,12 +135,16 @@
                     >
             <Border 
                 Background="{DynamicResource TextBoxColor}"
-                Margin="15 5"
+                Margin="18 5"
                 CornerRadius="5"
                 BorderThickness="1"
                 BorderBrush="#535353">
-                        
-                <TextBox Grid.Column="1"
+                        <Border.Effect>
+                            <DropShadowEffect
+                                Color="Blue"
+                                Opacity="0.2"/>
+                        </Border.Effect>
+                        <TextBox Grid.Column="1"
                     x:Name="tbPhoneNumber"                   
                     Style="{DynamicResource TextBoxStyle}"/>
             </Border>
@@ -135,7 +154,12 @@
                 CornerRadius="5"
                 BorderThickness="1"
                 BorderBrush="#535353">
-                <TextBox
+                        <Border.Effect>
+                            <DropShadowEffect
+                                Color="Blue"
+                                Opacity="0.2"/>
+                        </Border.Effect>
+                        <TextBox
                     x:Name="tbAddress"
                     Style="{DynamicResource TextBoxStyle}"/>
             </Border>
@@ -144,7 +168,7 @@
                     Orientation="Horizontal"
                     >
             <Label
-                Margin="10 0 0 0"
+                Margin="18 0 0 0"
                 x:Name="lblCountry"
                 VerticalAlignment="Bottom"
                 Content="Country:"
@@ -162,11 +186,16 @@
                     >
             <Border 
                 Background="{DynamicResource TextBoxColor}"
-                Margin="15 5"
+                Margin="18 5"
                 CornerRadius="5"
                 BorderThickness="1"
                 BorderBrush="#535353">
-                <TextBox
+                        <Border.Effect>
+                            <DropShadowEffect
+                                Color="Blue"
+                                Opacity="0.2"/>
+                        </Border.Effect>
+                        <TextBox
                     x:Name="tbCountry"                   
                     Style="{DynamicResource TextBoxStyle}"/>
             </Border>
@@ -176,7 +205,12 @@
                 CornerRadius="5"
                 BorderThickness="1"
                 BorderBrush="#535353">
-                <TextBox
+                        <Border.Effect>
+                            <DropShadowEffect
+                                Color="Blue"
+                                Opacity="0.2"/>
+                        </Border.Effect>
+                        <TextBox
                     x:Name="tbCity"
                     Style="{DynamicResource TextBoxStyle}"/>
             </Border>
@@ -185,7 +219,7 @@
                     Orientation="Horizontal"
                     >
             <Label
-                Margin="10 0 0 0"
+                Margin="18 0 0 0"
                 x:Name="lblStartDate"
                 VerticalAlignment="Bottom"
                 Content="Start date:"
@@ -203,12 +237,17 @@
                     >
             <Border 
                 Background="{DynamicResource TextBoxColor}"
-                Margin="15 5"
+                Margin="18 5"
                 CornerRadius="5"
                 BorderThickness="1"
                 BorderBrush="#535353"
                 Width="240">
-                 <DatePicker x:Name="dtpStartDate" Style="{DynamicResource FormDatePicker}"/>
+                        <Border.Effect>
+                            <DropShadowEffect
+                                Color="Blue"
+                                Opacity="0.2"/>
+                        </Border.Effect>
+                        <DatePicker x:Name="dtpStartDate" Style="{DynamicResource FormDatePicker}"/>
 
 
             </Border>
@@ -218,18 +257,25 @@
                 CornerRadius="5"
                 BorderThickness="1"
                 BorderBrush="#535353"
-                Width="240">
+                Width="243"
+                >
+                        <Border.Effect>
+                            <DropShadowEffect
+                                Color="Blue"
+                                Opacity="0.2"/>
+                        </Border.Effect>
+                
 
               <DatePicker x:Name="dtpEndDate" Style="{DynamicResource FormDatePicker}"/>
                         
             </Border>
         </StackPanel>
 
-        <StackPanel Grid.Row="8"
+        <StackPanel Grid.Row="10"
                     Orientation="Horizontal"
                     >
             <Label
-                Margin="10 0 0 0"
+                Margin="18 0 0 0"
                 
                 VerticalAlignment="Bottom"
                 Content="Email:"
@@ -243,18 +289,23 @@
 
         </StackPanel>
         
-        <StackPanel Grid.Row="9"
+        <StackPanel Grid.Row="11"
                     Orientation="Horizontal"
                     >
             <Border 
                 Background="{DynamicResource TextBoxColor}"
-                Margin="15 5"
+                Margin="18 5"
                 CornerRadius="5"
                 BorderThickness="1"
                 BorderBrush="#535353">
-                <TextBox
-                    x:Name="tbEmail"                   
-                    Style="{DynamicResource TextBoxStyle}"/>
+                        <Border.Effect>
+                            <DropShadowEffect
+                                Color="Blue"
+                                Opacity="0.2"/>
+                        </Border.Effect>
+                        <TextBox 
+                                x:Name="tbEmail"                   
+                                Style="{DynamicResource TextBoxStyle}"/>
             </Border>
             <Border 
                 Background="{DynamicResource TextBoxColor}"
@@ -262,17 +313,22 @@
                 CornerRadius="5"
                 BorderThickness="1"
                 BorderBrush="#535353">
-                <TextBox
+                        <Border.Effect>
+                            <DropShadowEffect
+                                Color="Blue"
+                                Opacity="0.2"/>
+                        </Border.Effect>
+                        <TextBox
                     x:Name="tbPassportSeria"
                     Style="{DynamicResource TextBoxStyle}"/>
             </Border>
         </StackPanel>
 
-                <StackPanel Grid.Row="10"
+                <StackPanel Grid.Row="8"
                     Orientation="Horizontal"
                     >
                     <Label  
-                            Margin="10 0 0 0"
+                            Margin="18 0 0 0"
                             VerticalAlignment="Bottom"
                             Content="Night:"
                             Style="{DynamicResource TitleLabel}"/>
@@ -281,14 +337,19 @@
                 </StackPanel>
 
 
-            <StackPanel Grid.Row="11"
+            <StackPanel Grid.Row="9"
                         Orientation="Horizontal">
                     <Border 
                             Background="{DynamicResource TextBoxColor}"
-                            Margin="15 5 70 5"
+                            Margin="18 5 70 5"
                             CornerRadius="5"
                             BorderThickness="1"
                             BorderBrush="#535353">
+                        <Border.Effect>
+                            <DropShadowEffect
+                                Color="Blue"
+                                Opacity="0.2"/>
+                        </Border.Effect>
                         <TextBox
                             TextChanged="tbNight_TextChanged"
                             x:Name="tbNight"
@@ -330,26 +391,31 @@
             
                 </StackPanel>
                 <Label  Grid.Row="12"
-                            Margin="10 0 0 0"
+                            Margin="18 0 0 0"
                             VerticalAlignment="Bottom"
                             Content="Status:"
                             Style="{DynamicResource TitleLabel}"/>
+
 
                 <Grid Grid.Row="13">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
+                    
                     <ComboBox x:Name="cmbStatus"
-                              Margin="15 5 36 5"
+                              Margin="18 5 36 5"
                               Style="{DynamicResource FormComboBox}">
                         <ComboBoxItem>Pending</ComboBoxItem>
-                        <ComboBoxItem>Booked</ComboBoxItem>
+                        <ComboBoxItem>Bookked</ComboBoxItem>
                     </ComboBox>
-                    <Border Grid.Column="1">
+                    <Border Grid.Column="1"
+                            >
+                        
                         <Button
                                 Style="{DynamicResource CreateButton}"
                                    Content="Booking"
+                            
                             Cursor="Hand" Click="Button_Click">
 
                         </Button>

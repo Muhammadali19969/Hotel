@@ -15,19 +15,16 @@ namespace Hotel.Repositories.Guests;
 
 public class GuestRepository : BaseRepository, IGuestRepository
 {
-    public Task<int> CreateAsync(Room obj)
-    {
-        throw new System.NotImplementedException();
-    }
+    
 
     public async Task<int> CreateAsync(Guest obj)
     {
         try
         {
             await  _connection.OpenAsync();
-            string query = "INSERT INTO public.guests(first_name, last_name, address, passport_seria, city, country, phone_no, email, gender, created_at, updated_at, room_id, start_date, end_date, is_booking, payme)" +
+            string query = "INSERT INTO public.guests(first_name, last_name, address, passport_seria, city, country, phone_no, email, gender, created_at, updated_at, room_id, start_date, end_date, is_booking, payme,black_list)" +
                 "VALUES (@first_name, @last_name, @address, @passport_seria, @city, @country, @phone_no, @email, @gender, @created_at, @updated_at," +
-                " @room_id, @start_date, @end_date, @is_booking, @payme);";
+                " @room_id, @start_date, @end_date, @is_booking, @payme, @black_list);";
             await using(var command = new NpgsqlCommand(query , _connection))
             {
                 command.Parameters.AddWithValue("first_name", obj.FirstName);
@@ -46,14 +43,11 @@ public class GuestRepository : BaseRepository, IGuestRepository
                 command.Parameters.AddWithValue("end_date", obj.EndDate);
                 command.Parameters.AddWithValue("is_booking", obj.IsBooking);
                 command.Parameters.AddWithValue("payme", obj.Payme);
+                command.Parameters.AddWithValue("black_list", false);
                 
                 var result=await command.ExecuteNonQueryAsync();
                 return result;
-
-            
             }
-
-
         }
         catch (System.Exception ex)
         {
@@ -67,19 +61,68 @@ public class GuestRepository : BaseRepository, IGuestRepository
         }
     }
 
-    public Task<int> DeleteAsync(long id)
+    public async Task<int> DeleteAsync(long id)
     {
-        throw new System.NotImplementedException();
+        try
+        {
+            await _connection.OpenAsync();
+            string query = $"UPDATE public.guests SET black_list = true WHERE id = {id};";
+            await using(var command = new NpgsqlCommand(query,_connection))
+            {
+                var result = await command.ExecuteNonQueryAsync();
+                return result;
+            }
+            
+        }
+        catch (System.Exception)
+        {
+
+            return 0;
+        }
+        finally
+        {
+            await _connection.CloseAsync(); 
+        }
     }
 
-    public Task<IList<Room>> GetAllAsync(PagenationParams @params)
+    public async Task<IList<Guest>> GetAllOnlyGuest(PagenationParams pagenationParams)
     {
-        throw new System.NotImplementedException();
-    }
+        try
+        {
+            var list = new List<Guest>();   
+            await _connection.OpenAsync();
+            string query = "select * from guests  where is_booking='false' order by id desc";
+            await using (var command = new NpgsqlCommand(query, _connection))
+            {
+                await using (var reader = await command.ExecuteReaderAsync()) 
+                {
+                    while(await reader.ReadAsync())
+                    {
+                        var guest = new Guest();
+                        guest.Id = reader.GetInt64(0);
+                        guest.FirstName=reader.GetString(1);
+                        guest.LastName=reader.GetString(2); 
+                        guest.PassportSeria=reader.GetString(4);
+                        guest.PhoneNo=reader.GetString(7);
+                        guest.Payme=reader.GetFloat(14);
+                        guest.StartDate=reader.GetDateTime(15);
+                        guest.EndDate=reader.GetDateTime(16);
+                        guest.BlackList=reader.GetBoolean(17);
+                        list.Add(guest);
+                    }
+                }
+            }
+            return list;
+        }
+        catch (System.Exception)
+        {
 
-    public Task<IList<Room>> GetAllAsync(long id)
-    {
-        throw new System.NotImplementedException();
+            return new List<Guest>();
+        }
+        finally
+        {
+            await _connection.CloseAsync();
+        }
     }
 
     public async Task<Guest> GetByGuest(long id)
@@ -122,11 +165,6 @@ public class GuestRepository : BaseRepository, IGuestRepository
         throw new System.NotImplementedException();
     }
 
-    public Task<int> UpdateAsync(long id, Room obj)
-    {
-        throw new System.NotImplementedException();
-    }
-
     public Task<int> UpdateAsync(long id, Guest obj)
     {
         throw new System.NotImplementedException();
@@ -137,8 +175,5 @@ public class GuestRepository : BaseRepository, IGuestRepository
         throw new System.NotImplementedException();
     }
 
-    Task<IList<GuestViewModel>> IRepository<Guest, GuestViewModel>.GetAllAsync(long id)
-    {
-        throw new System.NotImplementedException();
-    }
+    
 }

@@ -9,8 +9,8 @@
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
-        Height="650"
-        Width="1000"
+        Height="750"
+        Width="1220"
         Background="Transparent"
         AllowsTransparency="True">
 
@@ -77,7 +77,8 @@
                     <RadioButton x:Name="rbStayView" 
                                 Style="{DynamicResource MenuButton}"
                                 Content="Stay View"
-                                Tag="{DynamicResource StayView}"/>
+                                Tag="{DynamicResource StayView}"
+                                 Click="rbStayView_Click"/>
 
                     <RadioButton x:Name="rbEmptyRooms" 
                                 Style="{DynamicResource MenuButton}"
@@ -88,15 +89,18 @@
                     <RadioButton x:Name="rbReport" 
                                 Style="{DynamicResource MenuButton}"
                                 Content="Report"
-                                Tag="{DynamicResource Report}"/>
-
-                    <RadioButton x:Name="rbAddRoom" 
+                                Tag="{DynamicResource Report}"
+                                 Click="rbReport_Click"/>
+                    
+                    
+                    <RadioButton Grid.Row="1"
+                            x:Name="rbAddRoom" 
                                 Style="{DynamicResource MenuButton}"
                                 Content="Add Room"
                                 Click="rbAddRoom_Click"
                                 VerticalAlignment="Bottom"
                                 Tag="{DynamicResource AddRoom}"/>
-
+                    
                 </StackPanel>
 
             </Border>
@@ -105,7 +109,7 @@
                     CornerRadius="0 0 10 0">
 
                 <Frame x:Name="PageNavigator"
-                       NavigationUIVisibility="Hidden" Navigated="PageNavigator_Navigated" Margin="-2,0,2,0"/>
+                       NavigationUIVisibility="Hidden" Navigated="PageNavigator_Navigated" Margin="0"/>
 
             </Border>
         </Grid>

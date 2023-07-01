@@ -24,6 +24,8 @@ namespace Hotel
         public MainWindow()
         {
             InitializeComponent();
+            DashboardPage dashboardPage = new DashboardPage();
+            PageNavigator.Content = dashboardPage;
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
@@ -63,11 +65,13 @@ namespace Hotel
 
         private void rbDashboard_Click(object sender, RoutedEventArgs e)
         {
-
+            DashboardPage dashboardPage = new DashboardPage();  
+            PageNavigator.Content=dashboardPage;
         }
 
         private void rbReservation_Click(object sender, RoutedEventArgs e)
         {
+            
             ReservationPage reservationPage = new ReservationPage();
             PageNavigator.Content = reservationPage;
         }
@@ -82,8 +86,18 @@ namespace Hotel
             
         }
 
-        
+        private void rbStayView_Click(object sender, RoutedEventArgs e)
+        {
+            StayViewPage stayViewPage = new StayViewPage();
+            PageNavigator.Content = stayViewPage;
         }
+
+        private void rbReport_Click(object sender, RoutedEventArgs e)
+        {
+            ReportPage reportPage = new ReportPage();
+            PageNavigator.Content = reportPage;
+        }
+    }
     
     }
 

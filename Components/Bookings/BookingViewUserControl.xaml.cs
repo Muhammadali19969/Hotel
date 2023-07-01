@@ -1,28 +1,48 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Hotel.Interfaces.StayView;
+using Hotel.Repositories.StayViewRepository;
+using Hotel.ViewModels.Bookings;
+using System;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace Hotel.Components.bookings
+namespace Hotel.Components.bookings;
+
+/// <summary>
+/// Interaction logic for BookingViewUserControl.xaml
+/// </summary>
+public partial class BookingViewUserControl : UserControl
 {
-    /// <summary>
-    /// Interaction logic for BookingViewUserControl.xaml
-    /// </summary>
-    public partial class BookingViewUserControl : UserControl
+    public BookingView booking { get; set; }
+
+    public Func<Task> RefreshDelegate { get; set; }
+
+    private readonly IStayViewRepository _stayViewRepository;
+    public BookingViewUserControl()
     {
-        public BookingViewUserControl()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+        this._stayViewRepository = new StayViewRepository();
+    }
+    public void SetData(BookingView view)
+    {
+        lbRoomType.Content=view.RoomType;
+        lblFirstName.Content = view.FirstName;
+        lblLastName.Content = view.LastName;
+        lblPhoneNo.Content = view.PhoneNum;
+        lblAmount.Content = view.Payme;
+        lblRoomNumber.Content = view.RoomNo;
+        lblFrom.Content = view.StartDate;
+        lblTo.Content = view.EndDate;
+        lblId.Content=view.Id;
+        booking = view;
+    }
+
+    private async void Payme_Click(object sender, RoutedEventArgs e)
+    {
+        long id = booking.Id;
+        long guest_id = booking.GuestId;
+        var result_room = await _stayViewRepository.DeleteAsync(id);
+        var result_guest = await _stayViewRepository.SetGuest(guest_id);
+        await RefreshDelegate();
     }
 }

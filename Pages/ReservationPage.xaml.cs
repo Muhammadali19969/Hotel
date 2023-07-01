@@ -31,6 +31,7 @@ namespace Hotel.Pages
         }
         public async Task RefreshAsync()
         {
+            wrpRooms.Children.Clear();
             PagenationParams pagenationParams = new PagenationParams
             {
                 PageNumber = 1,
@@ -46,7 +47,7 @@ namespace Hotel.Pages
                 roomViewUserControl.SetData(room);
                 var guest = await _guestRepository.GetByGuest(room.Id);
                 roomViewUserControl.SetGuestData(guest);
-
+                roomViewUserControl.RefreshDelegate = RefreshAsync;
                 wrpRooms.Children.Add(roomViewUserControl);
             }
         }

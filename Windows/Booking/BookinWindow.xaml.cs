@@ -3,9 +3,9 @@ using Hotel.Entities.Rooms;
 using Hotel.Helpers;
 using Hotel.Interfaces.Guests;
 using Hotel.Interfaces.Rooms;
-using Hotel.Pages;
 using Hotel.Repositories.Guests;
 using Hotel.Repositories.Rooms;
+using System;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -43,46 +43,65 @@ public partial class BookinWindow : Window
 
     private async void Button_Click(object sender, RoutedEventArgs e)
     {
-        
-        int index = (int)cmbStatus.SelectedIndex;
-        string status = "";
-        if (index == 0) status = "Pending";
-        else if (index == 1) status = "Bookked";
-
-        var is_check = await _roomRepository.UpdateStatus(status, room.Id);
-        this.Close();
 
         var guest = GetDataFromUI();
-
-        var result = await _guestRepository.CreateAsync(guest);
-        if (result > 0)
+        if (guest != null)
         {
-            MessageBox.Show("Successfuly");
+            int index = (int)cmbStatus.SelectedIndex;
+            string status = "";
+            if (index == 0) status = "Pending";
+            else if (index == 1) status = "Bookked";
+
+            var is_check = await _roomRepository.UpdateStatus(status, room.Id);
+
+            var result = await _guestRepository.CreateAsync(guest);
+            if (result > 0)
+            {
+                MessageBox.Show("Successfuly");
+            }
+            this.Close();
         }
+
+
     }
 
-    private Guest GetDataFromUI()
+    private Guest? GetDataFromUI()
     {
-        int index = (int)cmbStatus.SelectedIndex;
         Guest guest = new Guest();
-        guest.RoomId = room.Id;
-        guest.FirstName = tbFirstName.Text.ToString();
-        guest.LastName = tbLastName.Text.ToString();
-        guest.Address = tbAddress.Text.ToString();
-        guest.City = tbCity.Text.ToString();
-        guest.Country = tbCountry.Text.ToString();
-        guest.PhoneNo = tbPhoneNumber.Text.ToString();
-        guest.PassportSeria = tbPassportSeria.Text.ToString();
-        guest.Email = tbEmail.Text.ToString();
-        guest.StartDate = dtpStartDate.SelectedDate.Value;
-        guest.EndDate = dtpEndDate.SelectedDate.Value;
-        if (rbIsMale.IsChecked!.Value) guest.Gender = "Male";
-        else guest.Gender = "Female";
-        guest.IsBooking = true;
-        guest.Payme = float.Parse(tbNight.Text) * room.PricePerDay;
-        guest.CreatedAt = guest.UpdatedAt = TimeHalper.GetDateTime();
+        int index = 3;
+        index = (int)cmbStatus.SelectedIndex;
+        if (dtpEndDate.SelectedDate is null || dtpStartDate.SelectedDate is null || tbFirstName.Text == string.Empty || tbNight.Text == string.Empty || index==-1 || tbPhoneNumber.Text == string.Empty)
+        {
+            MessageBox.Show("Hato");
+            return null;
+        }
+        else
+        {
+            
 
-        return guest;
+            guest.RoomId = room.Id;
+            guest.FirstName = tbFirstName.Text.ToString();
+            guest.LastName = tbLastName.Text.ToString();
+            guest.Address = tbAddress.Text.ToString();
+            guest.City = tbCity.Text.ToString();
+            guest.Country = tbCountry.Text.ToString();
+            guest.PhoneNo = tbPhoneNumber.Text.ToString();
+            guest.PassportSeria = tbPassportSeria.Text.ToString();
+            guest.Email = tbEmail.Text.ToString();
+            if (rbIsMale.IsChecked!.Value) guest.Gender = "Male";
+            else guest.Gender = "Female";
+            guest.IsBooking = true;
+            guest.StartDate = dtpStartDate.SelectedDate.Value;
+            guest.EndDate = dtpEndDate.SelectedDate.Value;
+            int i = DateTime.Compare(dtpStartDate.SelectedDate.Value, dtpEndDate.SelectedDate.Value);
+            
+            guest.Night = tbNight.Text.ToString();
+            guest.Payme = float.Parse(tbNight.Text) * room.PricePerDay;
+            guest.CreatedAt = guest.UpdatedAt = TimeHalper.GetDateTime();
+
+            return guest;
+
+        }
 
     }
 

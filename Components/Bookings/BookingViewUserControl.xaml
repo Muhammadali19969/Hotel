@@ -6,9 +6,14 @@
              xmlns:local="clr-namespace:Hotel.Components.bookings"
              mc:Ignorable="d" 
              Height="350" Width="300"
-             Margin="10 10">
+             Margin="12 10 0 10">
     <Grid Cursor="Hand"
           Background="Transparent">
+        <Grid.Effect>
+            <DropShadowEffect Color="#4C3F91"
+                              Opacity="0.4"
+                              BlurRadius="10"/>
+        </Grid.Effect>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
@@ -30,13 +35,13 @@
         </Border>
         <Border Grid.Row="1"
                 x:Name="brData"
-                Background="#C2DEDC"
+                Background="#E5DFDF"
                 BorderBrush="{DynamicResource PrimaryBackground}"
                 CornerRadius=" 0 0 10 10"
                 BorderThickness="2 0 2 2">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="35"/>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
@@ -49,107 +54,107 @@
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Row="0">
-                    <Label 
+                    <Label Margin="0 5 0 0"
                             Content="First name:"/>
-                    <TextBox x:Name="tbFirstName"
+                    <Label x:Name="lblFirstName"
                              FontSize="16"
-                             Text="salom"
+                             Content="salom"
                              BorderThickness="0"
-                             Height="25"
                              VerticalAlignment="Center"
                              Margin="70,0,10,0">
-                    </TextBox>
+                    </Label>
 
                 </Grid>
 
                 <Grid Grid.Row="1">
-                    <Label 
+                    <Label Margin="0 5 0 0"
                             Content="Last name:"/>
-                    <TextBox x:Name="tbLastName"
+                    <Label x:Name="lblLastName"
                              FontSize="16"
-                             Text="salom"
+                             Content="salom"
                              BorderThickness="0"
-                             Height="25"
                              VerticalAlignment="Center"
                              Margin="70,0,10,0">
-                    </TextBox>
+                    </Label>
 
                 </Grid>
                 <Grid Grid.Row="2">
-                    <Label 
+                    <Label Margin="0 5 0 0"
                             Content="Phone No:"/>
-                    <TextBox x:Name="tbPhoneNo"
+                    <Label x:Name="lblPhoneNo"
                              FontSize="16"
-                             Text="salom"
+                             Content="salom"
                              BorderThickness="0"
-                             Height="25"
                              VerticalAlignment="Center"
                              Margin="70,0,10,0">
-                    </TextBox>
+                    </Label>
 
                 </Grid>
 
                 <Grid Grid.Row="3">
-                    <Label 
+                    <Label Margin="0 5 0 0"
                             Content="Amount:"/>
-                    <TextBox x:Name="tbAmount"
+                    <Label x:Name="lblAmount"
                              FontSize="16"
-                             Text="salom"
+                             Content="salom"
                              BorderThickness="0"
-                             Height="25"
                              VerticalAlignment="Center"
                              Margin="70,0,10,0">
 
-                    </TextBox>
+                    </Label>
 
                 </Grid>
                 <Grid Grid.Row="4">
-                    <Label 
-                            Content="Room No:"/>
-                    <TextBox x:Name="tbPricePerDay"
+                    <Label Margin="0 5 0 0"
+                            Content="Room No:"
+                            />
+                    <Label x:Name="lblRoomNumber"
                              FontSize="16"
-                             Text="salom"
-                             Height="25"
+                             Content="salom"
                              BorderThickness="0"
-                             
                              VerticalAlignment="Center"
                              Margin="70,0,10,0">
-                    </TextBox>
+                    </Label>
 
                 </Grid>
                 <Grid Grid.Row="5">
-                    
-                    <Label 
-                            Content="From:" />
-                    <TextBox x:Name="tbFrom"
+
+                    <Label Margin="0 5 0 0"
+                            Content="From:"
+                            />
+                    <Label x:Name="lblFrom"
                              BorderThickness="0"
                              FontSize="16"
-                             Text="salom"
-                             Height="25"
+                             Content="salom"
                              VerticalAlignment="Center"
                              Margin="70,0,10,0">
-                    </TextBox>
+                    </Label>
 
                 </Grid>
                 <Grid Grid.Row="6">
-                    <Label 
-                            Content="To:"/>
-                    <TextBox x:Name="tbTo"
+                    <Label Margin="0 5 0 0"
+                            Content="To:"
+                            />
+                    <Label x:Name="lblTo"
                              FontSize="16"
-                             Text="salom"
-                             Height="25"
+                             Content="salom"
                              BorderThickness="0"
                              VerticalAlignment="Center"
-                             Margin="70,0,10,0">
-                    </TextBox>
+                             Margin="70,0,10,0"
+                             >
+                    </Label>
 
                 </Grid>
+                <Label Grid.Row="7"
+                       x:Name="lblId"
+                       Visibility="Hidden"/>
                 <Button Grid.Row="8"
                         x:Name="Payme"
                         Style="{DynamicResource CreateButton}"
                         Background="Transparent"
                         Content="Payme"
-                        Margin="4">
+                        Margin="4"
+                        Click="Payme_Click">
                 </Button>
             </Grid>
         </Border>

@@ -15,6 +15,6 @@ public interface IRepository<TEntity, TViewModel>
 
     public Task<IList<TViewModel>> GetAllAsync(PagenationParams @params);
 
-    public Task<IList<TViewModel>> GetAllAsync(long id);
+    //public Task<IList<TViewModel>> GetAllAsync(long id);
 
 }
