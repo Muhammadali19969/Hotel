@@ -52,8 +52,6 @@ public partial class RoomViewUserControl1 : UserControl
         else
         {
             brBookingStatus.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("green"));
-
-
         }
 
         lbId.Content = room.Id;
@@ -64,14 +62,14 @@ public partial class RoomViewUserControl1 : UserControl
         tbDescription.Text= room.Description;
     }
 
-    private void grMain_MouseDown(object sender, MouseButtonEventArgs e)
+    public async void grMain_MouseDown(object sender, MouseButtonEventArgs e)
     {
 
         if(room_chek.Status == "Void")
         {
             BookinWindow bookinWindow = new BookinWindow(room_chek);
             bookinWindow.ShowDialog();
-            RefreshDelegate();
+            await RefreshDelegate();
         }
         
 

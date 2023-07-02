@@ -9,11 +9,11 @@
              Margin="12 10 0 10">
     <Grid Cursor="Hand"
           Background="Transparent">
-        <Grid.Effect>
+        <!--<Grid.Effect>
             <DropShadowEffect Color="#4C3F91"
                               Opacity="0.4"
                               BlurRadius="10"/>
-        </Grid.Effect>
+        </Grid.Effect>-->
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
@@ -35,7 +35,7 @@
         </Border>
         <Border Grid.Row="1"
                 x:Name="brData"
-                Background="#E5DFDF"
+                Background="#B6EAFA"
                 BorderBrush="{DynamicResource PrimaryBackground}"
                 CornerRadius=" 0 0 10 10"
                 BorderThickness="2 0 2 2">
@@ -93,7 +93,7 @@
 
                 <Grid Grid.Row="3">
                     <Label Margin="0 5 0 0"
-                            Content="Amount:"/>
+                            Content="Total Price:"/>
                     <Label x:Name="lblAmount"
                              FontSize="16"
                              Content="salom"

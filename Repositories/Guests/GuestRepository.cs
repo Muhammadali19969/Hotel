@@ -61,28 +61,11 @@ public class GuestRepository : BaseRepository, IGuestRepository
         }
     }
 
-    public async Task<int> DeleteAsync(long id)
-    {
-        try
-        {
-            await _connection.OpenAsync();
-            string query = $"UPDATE public.guests SET black_list = true WHERE id = {id};";
-            await using(var command = new NpgsqlCommand(query,_connection))
-            {
-                var result = await command.ExecuteNonQueryAsync();
-                return result;
-            }
-            
-        }
-        catch (System.Exception)
-        {
+   
 
-            return 0;
-        }
-        finally
-        {
-            await _connection.CloseAsync(); 
-        }
+    public Task<int> DeleteAsync(long id)
+    {
+        throw new System.NotImplementedException();
     }
 
     public async Task<IList<Guest>> GetAllOnlyGuest(PagenationParams pagenationParams)
@@ -108,6 +91,46 @@ public class GuestRepository : BaseRepository, IGuestRepository
                         guest.StartDate=reader.GetDateTime(15);
                         guest.EndDate=reader.GetDateTime(16);
                         guest.BlackList=reader.GetBoolean(17);
+                        list.Add(guest);
+                    }
+                }
+            }
+            return list;
+        }
+        catch (System.Exception)
+        {
+
+            return new List<Guest>();
+        }
+        finally
+        {
+            await _connection.CloseAsync();
+        }
+    }
+
+    public async Task<IList<Guest>> GetBlackList(PagenationParams pagenationParams)
+    {
+        try
+        {
+            var list = new List<Guest>();
+            await _connection.OpenAsync();
+            string query = "select * from guests  where black_list='true' order by id desc";
+            await using (var command = new NpgsqlCommand(query, _connection))
+            {
+                await using (var reader = await command.ExecuteReaderAsync())
+                {
+                    while (await reader.ReadAsync())
+                    {
+                        var guest = new Guest();
+                        guest.Id = reader.GetInt64(0);
+                        guest.FirstName = reader.GetString(1);
+                        guest.LastName = reader.GetString(2);
+                        guest.PassportSeria = reader.GetString(4);
+                        guest.PhoneNo = reader.GetString(7);
+                        guest.Payme = reader.GetFloat(14);
+                        guest.StartDate = reader.GetDateTime(15);
+                        guest.EndDate = reader.GetDateTime(16);
+                        guest.BlackList = reader.GetBoolean(17);
                         list.Add(guest);
                     }
                 }
@@ -175,5 +198,27 @@ public class GuestRepository : BaseRepository, IGuestRepository
         throw new System.NotImplementedException();
     }
 
-    
+    public async Task<int> SetBlackListAsync(long id, bool blackList)
+    {
+        try
+        {
+            await _connection.OpenAsync();
+            string query = $"UPDATE public.guests SET black_list = {blackList} WHERE id = {id};";
+            await using (var command = new NpgsqlCommand(query, _connection))
+            {
+                var result = await command.ExecuteNonQueryAsync();
+                return result;
+            }
+
+        }
+        catch (System.Exception)
+        {
+
+            return 0;
+        }
+        finally
+        {
+            await _connection.CloseAsync();
+        }
+    }
 }

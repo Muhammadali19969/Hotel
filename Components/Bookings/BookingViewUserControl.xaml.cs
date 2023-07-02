@@ -39,10 +39,14 @@ public partial class BookingViewUserControl : UserControl
 
     private async void Payme_Click(object sender, RoutedEventArgs e)
     {
-        long id = booking.Id;
-        long guest_id = booking.GuestId;
-        var result_room = await _stayViewRepository.DeleteAsync(id);
-        var result_guest = await _stayViewRepository.SetGuest(guest_id);
-        await RefreshDelegate();
+        MessageBoxResult result = MessageBox.Show("Payment confirmation !", "Information", MessageBoxButton.OKCancel, MessageBoxImage.Information, MessageBoxResult.Cancel, MessageBoxOptions.None);
+        if (result == MessageBoxResult.OK)
+        {
+            long id = booking.Id;
+            long guest_id = booking.GuestId;
+            var result_room = await _stayViewRepository.DeleteAsync(id);
+            var result_guest = await _stayViewRepository.SetGuest(guest_id);
+            await RefreshDelegate();
+        }
     }
 }

@@ -61,6 +61,10 @@ public partial class BookinWindow : Window
             }
             this.Close();
         }
+        else
+        {
+            MessageBox.Show("Ma'lumot To'liq kiritilmadi !");
+        }
 
 
     }
@@ -68,17 +72,15 @@ public partial class BookinWindow : Window
     private Guest? GetDataFromUI()
     {
         Guest guest = new Guest();
-        int index = 3;
+        int index;
         index = (int)cmbStatus.SelectedIndex;
-        if (dtpEndDate.SelectedDate is null || dtpStartDate.SelectedDate is null || tbFirstName.Text == string.Empty || tbNight.Text == string.Empty || index==-1 || tbPhoneNumber.Text == string.Empty)
+        if (dtpEndDate.SelectedDate is null || dtpStartDate.SelectedDate is null || tbFirstName.Text == string.Empty || tbNight.Text == string.Empty || index == -1 || tbPhoneNumber.Text == string.Empty)
         {
-            MessageBox.Show("Hato");
+
             return null;
         }
         else
         {
-            
-
             guest.RoomId = room.Id;
             guest.FirstName = tbFirstName.Text.ToString();
             guest.LastName = tbLastName.Text.ToString();
@@ -94,7 +96,7 @@ public partial class BookinWindow : Window
             guest.StartDate = dtpStartDate.SelectedDate.Value;
             guest.EndDate = dtpEndDate.SelectedDate.Value;
             int i = DateTime.Compare(dtpStartDate.SelectedDate.Value, dtpEndDate.SelectedDate.Value);
-            
+
             guest.Night = tbNight.Text.ToString();
             guest.Payme = float.Parse(tbNight.Text) * room.PricePerDay;
             guest.CreatedAt = guest.UpdatedAt = TimeHalper.GetDateTime();

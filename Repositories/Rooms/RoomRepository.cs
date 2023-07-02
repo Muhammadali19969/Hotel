@@ -7,6 +7,7 @@ using Hotel.ViewModels.Rooms;
 using Npgsql;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -50,9 +51,29 @@ public class RoomRepository : BaseRepository, IRoomRepository
     }
 
 
-    public Task<int> DeleteAsync(long id)
+    public async Task<int> DeleteAsync(long id)
     {
-        throw new System.NotImplementedException();
+        try
+        {
+            await _connection.OpenAsync();
+
+            string query = $"Delete from rooms where id = {id};";
+
+            await using(var command=new NpgsqlCommand(query, _connection))
+            {
+                var result = await command.ExecuteNonQueryAsync();
+                return result;
+            }
+        }
+        catch 
+        {
+
+            return 0;
+        }
+        finally
+        {
+            await _connection.CloseAsync();
+        }
     }
 
     public async Task<IList<Room>> GetAllAsync(PagenationParams @params)
@@ -106,9 +127,71 @@ public class RoomRepository : BaseRepository, IRoomRepository
         throw new System.NotImplementedException();
     }
 
+    public async Task<List<Room>> GetRoomStatus(string status)
+    {
+        try
+        {
+            var list = new List<Room>();
+            await _connection.OpenAsync();
+            string query = $"Select * from rooms where room_status='{status}';";
+            await using(var command = new NpgsqlCommand(query, _connection))
+            {
+                await using (var reader = await command.ExecuteReaderAsync())
+                {
+                    while (await reader.ReadAsync())
+                    {
+                        Room room = new Room();
+                        room.Id = reader.GetInt64(0);
+                        room.Floor=reader.GetInt16(1);
+                        room.RoomNo=reader.GetInt16(2);
+                        room.Status=reader.GetString(3);
+                        room.PricePerDay=reader.GetFloat(4);
+                        room.Description=reader.GetString(5);
+                        room.RoomType =reader.GetString(8);
+                        list.Add(room);
+                    }
+                }
+            }
+            return list;
+        }
+        catch (Exception)
+        {
+
+            return new List<Room>();
+        }
+        finally
+        {
+            await _connection.CloseAsync();
+        }
+    }
+
     public Task<int> UpdateAsync(long id, Room obj)
     {
         throw new System.NotImplementedException();
+    }
+
+    public async Task<int> UpdatePrice(long id, float price)
+    {
+        try
+        {
+            await _connection.OpenAsync();
+            string query = $"Update rooms set price_per_day={price} where id = {id};";
+
+            await using(var command = new NpgsqlCommand(query, _connection)) 
+            {
+                var result = await command.ExecuteNonQueryAsync();
+                return result;
+            }
+        }
+        catch (Exception)
+        {
+
+            return 0;
+        }
+        finally
+        {
+            await _connection.CloseAsync();
+        }
     }
 
     public async Task<int> UpdateStatus(string status, long id)

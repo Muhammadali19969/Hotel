@@ -52,9 +52,43 @@ namespace Hotel.Pages
             }
         }
 
-        private void btnRefresh_Click(object sender, RoutedEventArgs e)
-        {
+       
 
+        private async void btnBooked_Click(object sender, RoutedEventArgs e)
+        {
+            await GetSelectedStastus("Bookked");
+        }
+
+        private async void btnPending_Click(object sender, RoutedEventArgs e)
+        {
+            await GetSelectedStastus("Pending");
+        }
+
+        private async void btnEmpty_Click(object sender, RoutedEventArgs e)
+        {
+            await GetSelectedStastus("Void");
+        }
+
+        public async Task GetSelectedStastus(string status)
+        {
+            wrpRooms.Children.Clear();
+            var rooms = await _roomRepository.GetRoomStatus(status);
+
+            foreach (var room in rooms)
+            {
+
+                RoomViewUserControl1 roomViewUserControl = new RoomViewUserControl1();
+                roomViewUserControl.SetData(room);
+                var guest = await _guestRepository.GetByGuest(room.Id);
+                roomViewUserControl.SetGuestData(guest);
+                roomViewUserControl.RefreshDelegate = RefreshAsync;
+                wrpRooms.Children.Add(roomViewUserControl);
+            }
+        }
+
+        private async void btnAll_Click(object sender, RoutedEventArgs e)
+        {
+            await RefreshAsync();
         }
     }
 }

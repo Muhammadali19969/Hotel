@@ -26,62 +26,89 @@
                 <StackPanel 
                             Orientation="Horizontal">
 
-                    <Border Margin="30 5 0 0"
+                    <!--<Border Margin="30 5 0 0"
                         CornerRadius="10"
                         Height="20"
                         Width="20"
                         Background="Red"
                         VerticalAlignment="Center">
+                        
 
-                    </Border>
+                    </Border>-->
+
+                    <Button x:Name="btnBooked"
+                            Margin="30 5 0 0"
+                            Cursor="Hand"
+                            Click="btnBooked_Click"
+                            Style="{DynamicResource BookedButton}"/>
+                    
                     <Label Content="Bookked"
                         Foreground="{DynamicResource PrimaryBackground}"
                         VerticalAlignment="Center"
                         FontSize="16"
                         Margin="8 0 0 0"/>
 
-                    <Border Margin="50 5 0 0"
+                    <!--<Border Margin="50 5 0 0"
                         CornerRadius="10"
                         Height="20"
                         Width="20"
                         Background="Yellow"
                         VerticalAlignment="Center">
 
-                    </Border>
+                    </Border>-->
+
+                    <Button x:Name="btnPending"
+                            Margin="30 5 0 0"
+                            Cursor="Hand"
+                            Click="btnPending_Click"
+                            Style="{DynamicResource PendingButton}"/>
+
                     <Label Content="Pending"
                         Foreground="{DynamicResource PrimaryBackground}"
                         VerticalAlignment="Center"
                         FontSize="16"
                         Margin="8 0 0 0"/>
 
-                    <Border Margin="50 5 0 0"
+                    <!--<Border Margin="50 5 0 0"
                         CornerRadius="10"
                         Height="20"
                         Width="20"
                         Background="Green"
                         VerticalAlignment="Center">
 
-                    </Border>
-                    <Label Content="Void"
+                    </Border>-->
+
+                    <Button x:Name="btnEmpty"
+                            Margin="30 5 0 0"
+                            Cursor="Hand"
+                            Click="btnEmpty_Click"
+                            Style="{DynamicResource EmptyButton}"/>
+
+                    <Label Content="Empty"
                         Foreground="{DynamicResource PrimaryBackground}"
                         VerticalAlignment="Center"
                         FontSize="16"
                         Margin="8 0 0 0"/>
-                
+
+                    <Button x:Name="btnAll"
+                            Margin="30 5 0 0"
+                            Cursor="Hand"
+                            Click="btnAll_Click"
+                            Style="{DynamicResource AllButton}"/>
+
+                    <Label Content="All"
+                        Foreground="{DynamicResource PrimaryBackground}"
+                        VerticalAlignment="Center"
+                        FontSize="16"
+                        Margin="8 0 0 0"/>
+
                 </StackPanel>
             
             </Border>
             <Border Grid.Column="1"
                     BorderBrush="{DynamicResource PrimaryBackground}"
                     BorderThickness="0 0 0 1">
-                <Button 
-                        x:Name="btnRefresh"
-                        Click="btnRefresh_Click"
-                        Style="{DynamicResource RefreshButton}"
-                        Height="28"
-                        Width="30">
-
-                </Button>
+                
             </Border>
             
         </Grid>
